@@ -1,15 +1,18 @@
 import './tracking.css'
+import { Header } from '../components/Header'
 export function TrackingPage() {
     return (
         <>
             <div class="header">
+                <Header/>
+                <link rel="icon" href="/tracking-favicon.png" />
                 <div class="left-section">
-                    <a href="/" class="header-link">
+                    <Link to="/" className="header-link">
                         <img class="logo"
                             src="images/logo-white.png" />
                         <img class="mobile-logo"
                             src="images/mobile-logo-white.png" />
-                    </a>
+                    </Link>
                 </div>
 
                 <div class="middle-section">
@@ -21,24 +24,24 @@ export function TrackingPage() {
                 </div>
 
                 <div class="right-section">
-                    <a class="orders-link header-link" href="/orders">
+                    <Link className="orders-link header-link" to="/orders">
 
                         <span class="orders-text">Orders</span>
-                    </a>
+                    </Link>
 
-                    <a class="cart-link header-link" href="/checkout">
+                    <Link className="cart-link header-link" to="/checkout">
                         <img class="cart-icon" src="images/icons/cart-icon.png" />
                         <div class="cart-quantity">3</div>
                         <div class="cart-text">Cart</div>
-                    </a>
+                    </Link>
                 </div>
             </div>
 
             <div class="tracking-page">
                 <div class="order-tracking">
-                    <a class="back-to-orders-link link-primary" href="/orders">
+                    <Link className="back-to-orders-link link-primary" to="/orders">
                         View all orders
-                    </a>
+                    </Link>
 
                     <div class="delivery-date">
                         Arriving on Monday, June 13
