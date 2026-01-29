@@ -1,207 +1,130 @@
 import { CheckoutHeader } from './CheckoutHeader'
 import './checkoutPage.css'
+import { useState, useEffect } from 'react'
+import { products } from "./products";
+ // Make sure this path is correct
 
 export function CheckoutPage() {
-    return (
-        <>
-            <title>Checkout</title>
-            <CheckoutHeader/>
-            <link rel="icon" type="image/svg+xml" href="/cart-favicon.png" />
+  const [cart, setCart] = useState([])
 
-           
-            <div className="checkout-page">
-                <div className="page-title">Review your order</div>
+  // Load cart from localStorage on page load
+  useEffect(() => {
+    const savedCart = JSON.parse(localStorage.getItem('cart')) || []
+    setCart(savedCart)
+  }, [])
 
-                <div className="checkout-grid">
-                    <div className="order-summary">
-                        <div className="cart-item-container">
-                            <div className="delivery-date">
-                                Delivery date: Tuesday, June 21
-                            </div>
+  const updateQuantity = (productId, newQty) => {
+    const updatedCart = cart.map((item) =>
+      item.id === productId ? { ...item, quantity: newQty } : item
+    )
+    setCart(updatedCart)
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
+  }
 
-                            <div className="cart-item-details-grid">
-                                <img className="product-image"
-                                    src="images/products/athletic-cotton-socks-6-pairs.jpg" />
+  const deleteItem = (productId) => {
+    const updatedCart = cart.filter((item) => item.id !== productId)
+    setCart(updatedCart)
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
+  }
 
-                                <div className="cart-item-details">
-                                    <div className="product-name">
-                                        Black and Gray Athletic Cotton Socks - 6 Pairs
-                                    </div>
-                                    <div className="product-price">
-                                        $10.90
-                                    </div>
-                                    <div className="product-quantity">
-                                        <span>
-                                            Quantity: <span className="quantity-label">2</span>
-                                        </span>
-                                        <span className="update-quantity-link link-primary">
-                                            Update
-                                        </span>
-                                        <span className="delete-quantity-link link-primary">
-                                            Delete
-                                        </span>
-                                    </div>
-                                </div>
+  // Only display products that are in localStorage cart
+  const cartProducts = products.filter((product) =>
+    cart.some((cartItem) => cartItem.id === product.id)
+  )
 
-                                <div className="delivery-options">
-                                    <div className="delivery-options-title">
-                                        Choose a delivery option:
-                                    </div>
-                                    <div className="delivery-option">
-                                        <input type="radio" checked
-                                            className="delivery-option-input"
-                                            name="delivery-option-1" />
-                                        <div>
-                                            <div className="delivery-option-date">
-                                                Tuesday, June 21
-                                            </div>
-                                            <div className="delivery-option-price">
-                                                FREE Shipping
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="delivery-option">
-                                        <input type="radio"
-                                            className="delivery-option-input"
-                                            name="delivery-option-1" />
-                                        <div>
-                                            <div className="delivery-option-date">
-                                                Wednesday, June 15
-                                            </div>
-                                            <div className="delivery-option-price">
-                                                $4.99 - Shipping
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="delivery-option">
-                                        <input type="radio"
-                                            className="delivery-option-input"
-                                            name="delivery-option-1" />
-                                        <div>
-                                            <div className="delivery-option-date">
-                                                Monday, June 13
-                                            </div>
-                                            <div className="delivery-option-price">
-                                                $9.99 - Shipping
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+  // Merge quantity from cart into the filtered products
+  const displayCart = cartProducts.map((product) => {
+    const cartItem = cart.find((item) => item.id === product.id)
+    return { ...product, quantity: cartItem.quantity }
+  })
 
-                        <div className="cart-item-container">
-                            <div className="delivery-date">
-                                Delivery date: Wednesday, June 15
-                            </div>
+  const totalItems = displayCart.reduce((sum, item) => sum + item.quantity, 0)
+  const subtotal = displayCart.reduce((sum, item) => sum + item.quantity * (item.priceCents / 100), 0)
+  const shipping = subtotal > 50 ? 0 : 4.99
+  const tax = subtotal * 0.1
+  const total = subtotal + shipping + tax
 
-                            <div className="cart-item-details-grid">
-                                <img className="product-image"
-                                    src="images/products/intermediate-composite-basketball.jpg" />
+  return (
+    <>
+      <title>Checkout</title>
+      <CheckoutHeader />
 
-                                <div className="cart-item-details">
-                                    <div className="product-name">
-                                        Intermediate Size Basketball
-                                    </div>
-                                    <div className="product-price">
-                                        $20.95
-                                    </div>
-                                    <div className="product-quantity">
-                                        <span>
-                                            Quantity: <span className="quantity-label">1</span>
-                                        </span>
-                                        <span className="update-quantity-link link-primary">
-                                            Update
-                                        </span>
-                                        <span className="delete-quantity-link link-primary">
-                                            Delete
-                                        </span>
-                                    </div>
-                                </div>
+      <div className="checkout-page">
+        <div className="page-title">Review your order</div>
 
-                                <div className="delivery-options">
-                                    <div className="delivery-options-title">
-                                        Choose a delivery option:
-                                    </div>
+        <div className="checkout-grid">
+          <div className="order-summary">
+            {displayCart.length === 0 && <div>Your cart is empty.</div>}
 
-                                    <div className="delivery-option">
-                                        <input type="radio" className="delivery-option-input"
-                                            name="delivery-option-2" />
-                                        <div>
-                                            <div className="delivery-option-date">
-                                                Tuesday, June 21
-                                            </div>
-                                            <div className="delivery-option-price">
-                                                FREE Shipping
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="delivery-option">
-                                        <input type="radio" checked className="delivery-option-input"
-                                            name="delivery-option-2" />
-                                        <div>
-                                            <div className="delivery-option-date">
-                                                Wednesday, June 15
-                                            </div>
-                                            <div className="delivery-option-price">
-                                                $4.99 - Shipping
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="delivery-option">
-                                        <input type="radio" className="delivery-option-input"
-                                            name="delivery-option-2" />
-                                        <div>
-                                            <div className="delivery-option-date">
-                                                Monday, June 13
-                                            </div>
-                                            <div className="delivery-option-price">
-                                                $9.99 - Shipping
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            {displayCart.map((item) => (
+              <div className="cart-item-container" key={item.id}>
+                <div className="cart-item-details-grid">
+                  <img className="product-image" src={item.image} alt={item.name} />
+
+                  <div className="cart-item-details">
+                    <div className="product-name">{item.name}</div>
+                    <div className="product-price">€{(item.priceCents / 100).toFixed(2)}</div>
+                    <div className="product-quantity">
+                      Quantity: {item.quantity}
+                      <span
+                        className="update-quantity-link link-primary"
+                        onClick={() => {
+                          const newQty = parseInt(prompt('Enter new quantity:', item.quantity))
+                          if (newQty > 0) updateQuantity(item.id, newQty)
+                        }}
+                      >
+                        Update
+                      </span>
+                      <span
+                        className="delete-quantity-link link-primary"
+                        onClick={() => deleteItem(item.id)}
+                      >
+                        Delete
+                      </span>
                     </div>
-
-                    <div className="payment-summary">
-                        <div className="payment-summary-title">
-                            Payment Summary
-                        </div>
-
-                        <div className="payment-summary-row">
-                            <div>Items (3):</div>
-                            <div className="payment-summary-money">$42.75</div>
-                        </div>
-
-                        <div className="payment-summary-row">
-                            <div>Shipping &amp; handling:</div>
-                            <div className="payment-summary-money">$4.99</div>
-                        </div>
-
-                        <div className="payment-summary-row subtotal-row">
-                            <div>Total before tax:</div>
-                            <div className="payment-summary-money">$47.74</div>
-                        </div>
-
-                        <div className="payment-summary-row">
-                            <div>Estimated tax (10%):</div>
-                            <div className="payment-summary-money">$4.77</div>
-                        </div>
-
-                        <div className="payment-summary-row total-row">
-                            <div>Order total:</div>
-                            <div className="payment-summary-money">$52.51</div>
-                        </div>
-
-                        <button className="place-order-button button-primary">
-                            Place your order
-                        </button>
-                    </div>
+                  </div>
                 </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="payment-summary">
+            <div className="payment-summary-title">Payment Summary</div>
+
+            <div className="payment-summary-row">
+              <div>Items ({totalItems}):</div>
+              <div className="payment-summary-money">€{subtotal.toFixed(2)}</div>
             </div>
 
-        </>
-    )
+            <div className="payment-summary-row">
+              <div>Shipping &amp; handling:</div>
+              <div className="payment-summary-money">€{shipping.toFixed(2)}</div>
+            </div>
+
+            <div className="payment-summary-row subtotal-row">
+              <div>Total before tax:</div>
+              <div className="payment-summary-money">€{(subtotal + shipping).toFixed(2)}</div>
+            </div>
+
+            <div className="payment-summary-row">
+              <div>Estimated tax (10%):</div>
+              <div className="payment-summary-money">€{tax.toFixed(2)}</div>
+            </div>
+
+            <div className="payment-summary-row total-row">
+              <div>Order total:</div>
+              <div className="payment-summary-money">€{total.toFixed(2)}</div>
+            </div>
+
+            <button
+              className="place-order-button button-primary"
+              onClick={() => alert('Order placed!')}
+            >
+              Place your order
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  )
 }

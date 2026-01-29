@@ -1,0 +1,46 @@
+.refund-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+  color: #333;
+}
+
+.refund-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #111;
+}
+
+.refund-heading {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.refund-paragraph {
+  font-size: 1rem;
+  margin-bottom: 16px;
+  color: #444;
+}
+
+.refund-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.refund-list li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #444;
+}
+
+.refund-email {
+  font-weight: 600;
+  color: #0066cc;
+}

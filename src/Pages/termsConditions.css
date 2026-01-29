@@ -1,0 +1,64 @@
+/* Container styling */
+.terms-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.8;
+  color: #333;
+  background-color: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Main title */
+.terms-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #111;
+  text-align: center;
+}
+
+/* Section headings */
+.terms-heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  color: #222;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 5px;
+}
+
+/* Paragraphs */
+.terms-paragraph {
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* Email styling */
+.terms-email {
+  font-weight: 600;
+  color: #0066cc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .terms-container {
+    padding: 30px 15px;
+  }
+
+  .terms-title {
+    font-size: 2rem;
+  }
+
+  .terms-heading {
+    font-size: 1.4rem;
+  }
+
+  .terms-paragraph {
+    font-size: 1rem;
+  }
+}
