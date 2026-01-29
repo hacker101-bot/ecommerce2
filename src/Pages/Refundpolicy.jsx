@@ -93,7 +93,7 @@ const RefundPolicyPage = () => {
         <h2 style={headingStyles}>Contact Us</h2>
         <p style={paragraphStyles}>
           If you have questions about our refund policy, please contact us at
-          <span style={emailStyles}> support@enomfonmultimediahub.com</span>.
+          <span style={emailStyles}> Akpanenomfon3@gmail.com</span>.
         </p>
       </div>
     </div>
