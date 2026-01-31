@@ -13,6 +13,7 @@
   left: 0;
   right: 0;
   height: 60px;
+  z-index: 1000;
 }
 
 .header .left-section {
@@ -195,9 +196,37 @@
 }
 
 /* ----------------------------
+   MOBILE CART STYLES
+---------------------------- */
+.cart-link-mobile {
+  display: none;
+}
+
+.cart-icon-mobile {
+  width: 28px;
+  height: 28px;
+}
+
+/* ----------------------------
    Mobile View (Responsive)
 ---------------------------- */
 @media (max-width: 800px) {
+  /* Hide desktop cart on mobile */
+  .header .right-section {
+    display: none;
+  }
+
+  /* Show mobile cart icon */
+  .cart-link-mobile {
+    display: block;
+    margin-right: 15px;
+  }
+
+  /* Adjust search bar spacing for mobile */
+  .header .search-bar {
+    margin-left: 20px;
+    max-width: 100%;
+  }
 
   /* Hide left links by default */
   .header .left-links {
@@ -221,5 +250,18 @@
   /* Show hamburger on mobile */
   .header .hamburger {
     display: flex;
+  }
+}
+
+/* Additional responsive adjustment for smaller screens */
+@media (max-width: 500px) {
+  .header .search-bar {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  
+  .cart-icon-mobile {
+    width: 24px;
+    height: 24px;
   }
 }
