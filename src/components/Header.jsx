@@ -34,6 +34,10 @@ export function Header() {
           <NavLink to="/refund-policy" className="header-link" onClick={() => setMenuOpen(false)}>
             Refund Policy
           </NavLink>
+          <NavLink to="/checkout" className="cart-link header-link">
+          <img src={cartIcon} alt="Cart" className="cart-icon" />
+          <div className="cart-text">Cart</div>
+        </NavLink>
         </nav>
       </div>
 
@@ -51,10 +55,7 @@ export function Header() {
 
       {/* RIGHT SECTION */}
       <div className="right-section">
-        <NavLink to="/checkout" className="cart-link header-link">
-          <img src={cartIcon} alt="Cart" className="cart-icon" />
-          <div className="cart-text">Cart</div>
-        </NavLink>
+        
       </div>
     </header>
   );
