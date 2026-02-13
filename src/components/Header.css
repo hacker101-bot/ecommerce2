@@ -17,7 +17,10 @@
 }
 
 .header .left-section {
-  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 380px;
 }
 
 @media (max-width: 800px) {
@@ -26,6 +29,39 @@
   }
 }
 
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.brand-logo {
+  height: 28px;
+  width: 28px;
+  border-radius: 6px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.brand-name {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.brand-tagline {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+/* Links */
 .header .header-link {
   display: inline-block;
   padding: 6px 9.5px;
@@ -39,27 +75,22 @@
   border: 1px solid white;
 }
 
-.header .logo {
-  height: 26px;
-  margin-top: 1px;
+/* Ensure link color stays white */
+.header .header-link,
+.header .header-link:link,
+.header .header-link:visited,
+.header .header-link:hover,
+.header .header-link:active {
+  color: white;
+  text-decoration: none;
 }
 
-.header .mobile-logo {
-  display: none;
+/* Active link underline */
+.header .header-link.active {
+  text-decoration: underline;
 }
 
-@media (max-width: 675px) {
-  .header .logo {
-    display: none;
-  }
-
-  .header .mobile-logo {
-    display: block;
-    height: 26px;
-    margin-top: 1px;
-  }
-}
-
+/* Middle (Search) */
 .header .middle-section {
   flex: 1;
   max-width: 850px;
@@ -71,15 +102,13 @@
 .header .search-bar {
   flex: 1;
   max-width: 600px;
-  margin-left: 100px;
+  margin-left: 60px;
   font-size: 16px;
   height: 38px;
   padding-left: 15px;
   border: none;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
 .header .search-button {
@@ -91,100 +120,53 @@
   border-bottom-right-radius: 5px;
   flex-shrink: 0;
 
-  display: flex;                /* ✅ ADDED */
-  align-items: center;          /* ✅ ADDED */
-  justify-content: center;      /* ✅ ADDED */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.header .search-icon {
-  height: 18px;
-  margin-left: px;
-  margin-top: 3px;
-}
-
+/* Right section CTA */
 .header .right-section {
-  width: 180px;
+  width: 190px;
   flex-shrink: 0;
   display: flex;
   justify-content: end;
-}
-
-.header .orders-link {
-  color: white;
-
-  display: flex;
   align-items: center;
-  padding-left: 13px;
-  padding-right: 13px;
 }
 
-.header .orders-text {
-  display: block;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.header .cart-link {
-  color: white;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.header .cart-icon {
-  width: 38px;
-}
-
-.header .cart-text {
-  margin-left: 5px;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.header .cart-quantity {
+.cta-button {
+  background: white;
   color: rgb(8, 79, 45);
-  font-size: 14px;
-  font-weight: 700;
-
-  position: absolute;
-  top: 8.5px;
-  right: 46px;
-
-  width: 26px;
-  text-align: center;
+  font-weight: 800;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
-.orders-link.active{
-  text-decoration: underline;
+
+.cta-button:hover {
+  opacity: 0.9;
 }
-/* For all NavLink / anchor links */
-.header .header-link,
-.header .header-link:link,   /* unvisited link */
-.header .header-link:visited, /* visited link */
-.header .header-link:hover,  /* hovered */
-.header .header-link:active  /* active/clicked */
-{
-    color: white;      /* text color */
-    text-decoration: none;  /* remove underline if needed */
+
+.cta-button:active {
+  opacity: 0.8;
 }
 
 /* ----------------------------
    Hamburger Menu Styles
 ---------------------------- */
-
-/* Container for links that will collapse behind hamburger */
 .header .left-links {
   display: flex;
-  gap: 12px;
+  gap: 10px;
+  align-items: center;
 }
 
-/* Hamburger icon (three bars) */
 .header .hamburger {
   display: none; /* Hidden on desktop */
   flex-direction: column;
   justify-content: space-between;
   width: 25px;
   height: 18px;
-  margin-left: 8px;
   cursor: pointer;
 }
 
@@ -196,43 +178,25 @@
 }
 
 /* ----------------------------
-   MOBILE CART STYLES
----------------------------- */
-.cart-link-mobile {
-  display: none;
-}
-
-.cart-icon-mobile {
-  width: 28px;
-  height: 28px;
-}
-
-/* ----------------------------
    Mobile View (Responsive)
 ---------------------------- */
 @media (max-width: 800px) {
-  /* Hide desktop cart on mobile */
+  /* Hide CTA on mobile (optional) */
   .header .right-section {
     display: none;
   }
 
-  /* Show mobile cart icon */
-  .cart-link-mobile {
-    display: block;
-    margin-right: 15px;
-  }
-
   /* Adjust search bar spacing for mobile */
   .header .search-bar {
-    margin-left: 20px;
+    margin-left: 10px;
     max-width: 100%;
   }
 
-  /* Hide left links by default */
+  /* Hide links by default */
   .header .left-links {
     display: none;
     position: absolute;
-    top: 60px; /* Below header */
+    top: 60px;
     left: 0;
     width: 100%;
     flex-direction: column;
@@ -242,26 +206,26 @@
     z-index: 999;
   }
 
-  /* Show links when menu is open */
   .header .left-links.open {
     display: flex;
   }
 
-  /* Show hamburger on mobile */
   .header .hamburger {
     display: flex;
   }
+
+  /* Hide brand tagline on small screens */
+  .brand-tagline {
+    display: none;
+  }
 }
 
-/* Additional responsive adjustment for smaller screens */
 @media (max-width: 500px) {
   .header .search-bar {
-    margin-left: 10px;
     font-size: 14px;
   }
-  
-  .cart-icon-mobile {
-    width: 24px;
-    height: 24px;
+
+  .brand-name {
+    font-size: 14px;
   }
 }

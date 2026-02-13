@@ -2,37 +2,55 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
 
-import cartIcon from "../assets/images/icons/cart-icon.png";
 import searchIcon from "../assets/images/icons/search-icon.png";
+// OPTIONAL: replace with your own logo file
+// import logo from "../assets/images/logo.png";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen(prev => !prev);
-  };
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
     <header className="header">
       {/* LEFT SECTION */}
       <div className="left-section">
-        {/* Hamburger */}
-        <div className="hamburger" onClick={toggleMenu}>
+        {/* Hamburger (mobile) */}
+        <div className="hamburger" onClick={toggleMenu} role="button" tabIndex={0}>
           <span className="bar" />
           <span className="bar" />
           <span className="bar" />
         </div>
 
+        {/* Brand */}
+        <NavLink to="/" className="brand" onClick={() => setMenuOpen(false)}>
+          {/* <img src={logo} alt="Company Logo" className="brand-logo" /> */}
+          <div className="brand-text">
+            <div className="brand-name">NKT Energy</div>
+            <div className="brand-tagline">Oil & Gas Services</div>
+          </div>
+        </NavLink>
+
         {/* Links */}
         <nav className={`left-links ${menuOpen ? "open" : ""}`}>
+          <NavLink to="/services" className="header-link" onClick={() => setMenuOpen(false)}>
+            Services
+          </NavLink>
+
+          <NavLink to="/projects" className="header-link" onClick={() => setMenuOpen(false)}>
+            Projects
+          </NavLink>
+
+          <NavLink to="/hse" className="header-link" onClick={() => setMenuOpen(false)}>
+            HSE
+          </NavLink>
+
           <NavLink to="/aboutus" className="header-link" onClick={() => setMenuOpen(false)}>
-            About Us
+            About
           </NavLink>
-          <NavLink to="/terms-condition" className="header-link" onClick={() => setMenuOpen(false)}>
-            Terms & Conditions
-          </NavLink>
-          <NavLink to="/refund-policy" className="header-link" onClick={() => setMenuOpen(false)}>
-            Refund Policy
+
+          <NavLink to="/contact" className="header-link" onClick={() => setMenuOpen(false)}>
+            Contact
           </NavLink>
         </nav>
       </div>
@@ -42,25 +60,19 @@ export function Header() {
         <input
           type="text"
           className="search-bar"
-          placeholder="Search"
+          placeholder="Search services, projects..."
         />
-        <button className="search-button">
-          <img src={searchIcon} alt="Search" width={"18px"}/>
+        <button className="search-button" aria-label="Search">
+          <img src={searchIcon} alt="Search" width="18" />
         </button>
       </div>
 
-      {/* RIGHT SECTION - DESKTOP CART */}
+      {/* RIGHT SECTION (Call-to-action) */}
       <div className="right-section">
-        <NavLink to="/checkout" className="cart-link header-link">
-          <img src={cartIcon} alt="Cart" className="cart-icon" />
-          <div className="cart-text">Cart</div>
+        <NavLink to="/contact" className="cta-button">
+          Request Quote
         </NavLink>
       </div>
-
-      {/* MOBILE CART ICON */}
-      <NavLink to="/checkout" className="cart-link-mobile">
-        <img src={cartIcon} alt="Cart" className="cart-icon-mobile" />
-      </NavLink>
     </header>
   );
 }
