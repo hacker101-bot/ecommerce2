@@ -101,42 +101,6 @@ const OilAndGasHomepage = () => {
         </div>
       </section>
 
-      {/* --- Global Footprint (Homepage summary) --- */}
-      <section className="og-global">
-        <div className="og-container">
-          <div className="og-section-header">
-            <span className="og-section-tag og-section-tag-light">Global Footprint</span>
-            <h2 className="og-section-title og-section-title-light">Strategic Operations Worldwide</h2>
-            <p className="og-section-desc">
-              Our assets span four continents, from the Permian Basin to offshore West Africa and the North Sea.
-            </p>
-          </div>
-          <div className="og-global-grid">
-            <div className="og-region-card">
-              <span className="og-region-icon">📍</span>
-              <h3>Americas</h3>
-              <p>Deepwater Gulf of Mexico, Permian Basin, Canadian oil sands.</p>
-              <span className="og-region-stats">12 production hubs</span>
-            </div>
-            <div className="og-region-card">
-              <span className="og-region-icon">📍</span>
-              <h3>Africa & Middle East</h3>
-              <p>Offshore Nigeria, Angola, and partnership in Saudi Arabia.</p>
-              <span className="og-region-stats">8 major fields</span>
-            </div>
-            <div className="og-region-card">
-              <span className="og-region-icon">📍</span>
-              <h3>Europe & Asia</h3>
-              <p>North Sea, Caspian Sea, and refining complex in Singapore.</p>
-              <span className="og-region-stats">5 refineries</span>
-            </div>
-          </div>
-          <div className="og-global-footer">
-            <a href="/operations" className="og-link">View interactive map →</a>
-          </div>
-        </div>
-      </section>
-
       {/* --- Sustainability Summary (Homepage appropriate) --- */}
       <section className="og-sustainability">
         <div className="og-container">
