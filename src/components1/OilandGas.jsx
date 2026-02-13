@@ -33,7 +33,7 @@ const OilAndGasHomepage = () => {
             </div>
             <h1 className="og-hero-title">Advanced Energy <br />for a Changing World</h1>
             <p className="og-hero-text">
-              With over 50 years of expertise in exploration, production, and refining, 
+              Expertise in exploration, production, and refining, 
               we deliver reliable energy while investing in a sustainable future.
             </p>
             <div className="og-hero-buttons">
@@ -46,28 +46,7 @@ const OilAndGasHomepage = () => {
       </section>
 
       {/* --- Key Statistics / About Info (Homepage appropriate) --- */}
-      <section className="og-stats">
-        <div className="og-container">
-          <div className="og-stats-grid">
-            <div className="og-stat-item">
-              <div className="og-stat-number">50+</div>
-              <div className="og-stat-label">Years of Legacy</div>
-            </div>
-            <div className="og-stat-item">
-              <div className="og-stat-number">17</div>
-              <div className="og-stat-label">Countries</div>
-            </div>
-            <div className="og-stat-item">
-              <div className="og-stat-number">3.2B</div>
-              <div className="og-stat-label">Barrels Annually</div>
-            </div>
-            <div className="og-stat-item">
-              <div className="og-stat-number">12k</div>
-              <div className="og-stat-label">Employees</div>
-            </div>
-          </div>
-        </div>
-      </section>
+  
 
       {/* --- About Core Business (Homepage summary) --- */}
       <section className="og-about">
@@ -223,20 +202,6 @@ const OilAndGasHomepage = () => {
       </section>
 
       {/* --- Contact & Report CTA (Homepage contact section) --- */}
-      <section className="og-cta">
-        <div className="og-container">
-          <div className="og-cta-content">
-            <h2 className="og-cta-title">Ready to see our full impact?</h2>
-            <p className="og-cta-text">
-              Download our latest Annual & Sustainability Report for detailed financials, 
-              operational data, and ESG performance.
-            </p>
-            <a href="/reports" className="og-btn og-btn-primary og-btn-large">Download Report (PDF) →</a>
-            <p className="og-cta-small">Or view our interactive data hub</p>
-          </div>
-        </div>
-      </section>
-
       {/* --- Footer with Contact Details & Page Links --- */}
       <footer className="og-footer">
         <div className="og-container">
@@ -264,24 +229,10 @@ const OilAndGasHomepage = () => {
                 <li><a href="/communities">Communities</a></li>
               </ul>
             </div>
-            <div className="og-footer-contact">
-              <h4>Contact</h4>
-              <ul>
-                <li><a href="/media">Media inquiries</a></li>
-                <li><a href="/investor-relations">Investor relations</a></li>
-                <li><a href="/careers">Careers</a></li>
-                <li className="og-contact-phone">+1 (555) 123-4567</li>
-                <li className="og-contact-email">info@energycore.com</li>
-              </ul>
-            </div>
+           
           </div>
           <div className="og-footer-bottom">
             <p>© 2025 EnergyCore. All rights reserved.</p>
-            <div className="og-footer-legal">
-              <a href="/privacy">Privacy</a>
-              <a href="/terms">Terms</a>
-              <a href="/sitemap">Sitemap</a>
-            </div>
           </div>
         </div>
       </footer>
