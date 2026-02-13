@@ -10,15 +10,12 @@ const OilAndGasHomepage = () => {
         <div className="og-container">
           <div className="og-header-content">
             <div className="og-logo">
-              <span className="og-logo-highlight">ENERGY</span>CORE
+              <span className="og-logo-highlight">ENOMFON</span>MULTIMEDIA HUB
             </div>
             <nav className="og-nav">
               <ul>
                 <li><a href="#home" className="active">Home</a></li>
                 <li><a href="/about">About</a></li>
-                <li><a href="/operations">Operations</a></li>
-                <li><a href="/sustainability">Sustainability</a></li>
-                <li><a href="/investors">Investors</a></li>
                 <li><a href="/contact">Contact</a></li>
               </ul>
             </nav>
